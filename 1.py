@@ -7,8 +7,6 @@ from PIL import Image
 from PIL import ImageTk
 import time
 
-cont=100
-prom=0
 
 placa = Arduino ('COM3')
 it = util.Iterator(placa)
