@@ -24,7 +24,7 @@ ventana.geometry('1080x800')
 ventana.title("PUNTO 1")
 
 # Fetch the service account key JSON file contents
-cred = credentials.Certificate('lave.json')
+cred = credentials.Certificate('lave/lave.json')
 # Initialize the app with a service account, granting admin privileges
 firebase_admin.initialize_app(cred, {
     'databaseURL': 'https://parcial-8fa09.firebaseio.com/'
