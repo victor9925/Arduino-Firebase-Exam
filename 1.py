@@ -7,49 +7,55 @@ from PIL import Image
 from PIL import ImageTk
 import time
 
-
-
 cont=100
 prom=0
 
-placa = Arduino ('COM5')
+placa = Arduino ('COM3')
 it = util.Iterator(placa)
 it.start()
-a_0 = placa.get_pin('a:0:i')
-led1 = placa.get_pin('d:3:o')
-led2 = placa.get_pin('d:5:o')
-led3 = placa.get_pin('d:6:o')
-led4 = placa.get_pin('d:9:o')
-led5 = placa.get_pin('d:10:o')
-led6 = placa.get_pin('d:11:o')
-led7 = placa.get_pin('d:12:o')
+#arduino con analog_0 quemado
+
+a0 = placa.get_pin('a:1:i')
+a1 = placa.get_pin('a:2:i')
+a2 = placa.get_pin('a:3:i')
+
+led1 = placa.get_pin('d:8:o')
+led2 = placa.get_pin('d:9:o')
+led3 = placa.get_pin('d:10:o')
+led4 = placa.get_pin('d:11:o')
+led5 = placa.get_pin('d:12:o')
+led6 = placa.get_pin('d:13:o')
+
 time.sleep(0.5)
 
 ventana = Tk()
 ventana.geometry('1080x800')
-ventana.title("UI para sistemas de control")
+ventana.title("PUNTO 1")
 
 # Fetch the service account key JSON file contents
-cred = credentials.Certificate('key.json')
+cred = credentials.Certificate('lave.json')
 # Initialize the app with a service account, granting admin privileges
 firebase_admin.initialize_app(cred, {
-    'databaseURL': 'https://tall-8b863.firebaseio.com/'
+    'databaseURL': 'https://parcial-8fa09.firebaseio.com/'
 })
 
 
 marco1 = Frame(ventana, bg="gray", highlightthickness=1, width=1280, height=800, bd= 5)
 marco1.place(x = 0,y = 0)
-b=Label(marco1,text="")
-img = Image.open("C:/Users/Labing/Desktop/logousa.png")
-img = img.resize((150,150), Image.ANTIALIAS)
-photoImg=  ImageTk.PhotoImage(img)
-b.configure(image=photoImg)
-b.place(x = 760,y = 20)
 
-valor= Label(marco1, bg='cadet blue1', font=("Arial Bold", 15), fg="white", width=5)
+frame1 = Frame(ventana, bg="gray", highlightthickness=1, width=500, height=500, bd= 5)
+frame1.place(x = 15,y = 15)
+
+label1= Label(marco1, bg='cadet blue1', font=("Arial Bold", 15), fg="white", width=5)
+label1.place(x=20,y=30)
 variable=StringVar()
+
 valor2= Label(marco1, bg='cadet blue1', font=("Arial Bold", 15), fg="white", width=5)
 adc_data=StringVar()
+
+
+
+
 
 def Leds_on():
 
@@ -132,12 +138,6 @@ def update_label():
                  }
              })   
     variable.set(cont)
-    
-  
-
-valor.configure(textvariable=variable)
-valor.place(x=20, y=90)
-
 leds_on=Button(marco1,text="LEDS_ON",command=Leds_on)
 leds_on.place(x=80, y=160)
 
@@ -151,8 +151,6 @@ save_button=Button(marco1,text="LEDS_OFF",command=Leds_off)
 save_button.place(x=170, y=160)
 
 save_button=Button(marco1,text="CONT",command=update_label)
-save_button.place(x=250, y=160)
-
-
-
+save_button.place(x=250, y=160)    
+    
 ventana.mainloop()
