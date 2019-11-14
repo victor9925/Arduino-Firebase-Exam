@@ -23,7 +23,7 @@ led3 = placa.get_pin('d:6:p')
 time.sleep(0.5)
 
 ventana = Tk()
-ventana.geometry('1080x800')
+ventana.geometry('700x700')
 ventana.title("PUNTO 1")
 
 # Fetch the service account key JSON file contents
@@ -91,13 +91,13 @@ def adc_read3():
        
 
 
-prom_15=Button(marco1,text="SENSOR 1",command=adc_read1)
+prom_15=Button(marco1,text="ADC1_UPDATE1",command=adc_read1)
 prom_15.place(x=130, y=50)
 
-save_button=Button(marco1,text="SENSOR 2",command=adc_read2)
+save_button=Button(marco1,text="ADC1_UPDATE2",command=adc_read2)
 save_button.place(x=130, y=90)
 
-save_button=Button(marco1,text="SENSOR 3",command=adc_read3)
+save_button=Button(marco1,text="ADC1_UPDATE3",command=adc_read3)
 save_button.place(x=130, y=130)    
     
 ventana.mainloop()
