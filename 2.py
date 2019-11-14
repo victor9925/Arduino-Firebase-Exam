@@ -39,6 +39,9 @@ marco1.place(x = 0,y = 0)
 
 frame1 = Frame(marco1, bg="darkolivegreen4", highlightthickness=1, width=500, height=500, bd= 5)
 frame1.place(x = 15,y = 15)
+texto = Label(ventana, text="SENSORES FIREBASE", bg='cadet blue1', font=("Arial Bold", 14), fg="white")
+texto.place(x=110, y=20)
+
 
 
 label1= Label(frame1, bg='light cyan', font=("times", 15), fg="lightyellow4", width=5)
